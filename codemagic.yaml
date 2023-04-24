@@ -11,7 +11,7 @@ definitions:
     scripts:
       - name: Upgrade brew
         script: brew install clang-format swiftlint || brew upgrade clang-format swiftlint
-      - name: Installing Scripts
+      - name: Installing scripts
         script: ./scripts/setup
       - name: Building projects
         script: |
