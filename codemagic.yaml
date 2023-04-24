@@ -25,10 +25,10 @@ workflows:
     <<: *base_workflow
     name: Wikipedia Workflow with Mac Pro
     instance_type: mac_pro
-  wikipedia-m1-mini:
+  wikipedia-mac-mini-m1:
     <<: *base_workflow
-    name: Wikipedia Workflow with M1 Mac Mini
+    name: Wikipedia Workflow with Mac mini M1
     instance_type: mac_mini_m1
-  wikipedia-m2-mini:
+  wikipedia-mac-mini-m2:
     <<: *base_workflow
-    name: Wikipedia Workflow with M2 Mac Mini
+    name: Wikipedia Workflow with Mac mini M2
