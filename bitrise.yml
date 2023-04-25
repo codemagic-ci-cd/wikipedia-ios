@@ -1,0 +1,27 @@
+format_version: "11"
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: other
+workflows:
+  benchmark:
+    steps:
+    - git-clone@6: {}
+    - script@1:
+        title: Upgrade brew
+        inputs:
+        - content: brew install clang-format swiftlint || brew upgrade clang-format swiftlint
+    - script@1:
+        title: Installing scripts
+        inputs:
+        - content: ./scripts/setup
+    - script@1:
+        title: Building projects
+        inputs:
+        - content: time xcodebuild clean build -project "Wikipedia.xcodeproj" -scheme "Wikipedia" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=16.2' -configuration Debug CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+    - script@1:
+        title: Running tests
+        inputs:
+        - content: time xcodebuild clean test -project "Wikipedia.xcodeproj" -scheme "Wikipedia" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=16.2'
+meta:
+  bitrise.io:
+    stack: osx-xcode-14.2.x-ventura
+    machine_type_id: g2-m1.8core
