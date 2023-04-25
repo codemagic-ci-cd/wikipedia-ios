@@ -4,7 +4,7 @@ project_type: other
 workflows:
   benchmark:
     steps:
-    - git-clone@6: {}
+    - git-clone@8: {}
     - script@1:
         title: Upgrade brew
         inputs:
