@@ -9,6 +9,10 @@ definitions:
       events:
         - push
     scripts:
+      - name: Create timing file
+        script: echo "project:" iOS Wikipedia > $(date "+%d-%m-%Y").txt
+      - name: Begin timing
+        script: echo "start:"$(date "+%s") >> $(date "+%d-%m-%Y").txt
       - name: Upgrade brew
         script: brew install clang-format swiftlint || brew upgrade clang-format swiftlint
       - name: Installing scripts
@@ -19,6 +23,10 @@ definitions:
       - name: Running tests
         script: |
           time xcodebuild clean test -project $XCODE_PROJECT -scheme $XCODE_SCHEME -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=16.2'
+      - name: End timing
+        script: echo "end:"$(date "+%s") >> $(date "+%d-%m-%Y").txt
+      - name: Upload timing to S3
+        script: echo "TODO:" upload timings to S3
 
 workflows:
   wikipedia-mac-pro:
