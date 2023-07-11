@@ -11,7 +11,7 @@ definitions:
     scripts:
       - name: Begin timing
         script: |
-          echo "project:" iOS Wikipedia > $(date "+%d-%m-%Y").txt
+          echo "project:"iOS Wikipedia > $(date "+%d-%m-%Y").txt
           echo "start:"$(date "+%s") >> $(date "+%d-%m-%Y").txt
       - name: Upgrade brew
         script: brew install clang-format swiftlint || brew upgrade clang-format swiftlint
@@ -25,7 +25,8 @@ definitions:
         script: echo "end:"$(date "+%s") >> $(date "+%d-%m-%Y").txt
       - name: Upload timing to S3
         script: |
-          echo "TODO:" upload timings to S3 
+          echo "TODO:" upload timings to S3
+          # aws s3 cp $(date "+%d-%m-%Y").txt s3://$BUCKET_NAME/
           echo "===="
           cat $(date "+%d-%m-%Y").txt
 
