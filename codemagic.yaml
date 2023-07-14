@@ -29,7 +29,8 @@ definitions:
           scripts/update_wikipedia.sh
           git config --global user.name "codemagic ci"
           git config --global user.email "devrel@nevercode.io"
-          git commit -a -m "update wikipedia app benchmark"
+          git add README.md
+          git commit -m "update wikipedia app benchmark"
           git push origin main
 
 workflows:
