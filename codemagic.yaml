@@ -17,7 +17,7 @@ definitions:
         script: ./runBuild.sh
       - name: Running tests
         script: 
-      - name: Upload timing to S3
+      - name: Record timings to Benchmarks repo
         script: |
           echo Update Benchmarks repo...
           export BUILD_TIME=$(cat build_time)
