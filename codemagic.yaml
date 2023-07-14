@@ -2,6 +2,8 @@ definitions:
   workflow: &base_workflow
     environment:
       xcode: 14.2
+      groups:
+        - Git
       vars:
         XCODE_PROJECT: "Wikipedia.xcodeproj"
         XCODE_SCHEME: "Wikipedia"
