@@ -16,7 +16,7 @@ definitions:
       - name: Building projects
         script: ./runBuild.sh
       - name: Running tests
-        script: 
+        script: ./runTests.sh
       - name: Record timings to Benchmarks repo
         script: |
           echo Update Benchmarks repo...
