@@ -15,24 +15,10 @@ definitions:
         script: brew install clang-format swiftlint || brew upgrade clang-format swiftlint
       - name: Installing scripts
         script: ./scripts/setup
-      - name: Building projects
-        script: ./runBuild.sh
+      # - name: Building projects
+      #   script: ./runBuild.sh
       - name: Running tests
         script: ./runTests.sh
-      - name: Record timings to Benchmarks repo
-        script: |
-          echo Update Benchmarks repo...
-          export BUILD_TIME=$(cat build_time)
-          export TESTS_TIME=$(cat tests_time)
-          git clone git@github.com:codemagic-ci-cd/codemagic-benchmarks.git
-          cd codemagic-benchmarks
-          scripts/update_wikipedia.sh
-          git config --global user.name "codemagic ci"
-          git config --global user.email "devrel@nevercode.io"
-          git add README.md
-          git commit -m "update wikipedia app benchmark"
-          git push origin main
-
 workflows:
   wikipedia-mac-pro:
     <<: *base_workflow
